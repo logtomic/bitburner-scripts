@@ -1,0 +1,129 @@
+Folder structure for the game:
+- usr: binaries that I would use as an individual
+--- Example: usr/bin/grep.js
+- bin: binaries that are system-wide, like hack or weaken or even a bash shell
+- sbin: sudo bin, files that would normally be done as system admin. Do I need this?
+- boot: files required for booting up the system (perhaps jupiterOS files can live in there?)
+- etc: system configuration files
+- lib: contains essential libraries for the /bin and /sbin directories
+--- Note: libraries for files in /usr/bin are located in /usr/lib
+- opt: optional packages. may be a good output location for logs
+- var: variable data files, the writable counterpart to /usr. Logs are typically written to /var/log
+
+===============================
+/boot
+-- jupiter.os.js               // Spawns an instance of Daemon, which spawns instances of Service
+                               // At any given time, there should be only one OS and only one Daemon active
+                               // Daemon has access to the entire system, when it is finished nothing* should be running
+                               // * exceptions may happen, but unlikely
+===============================
+/usr
+-- /bin
+---- dfs.js
+---- find.js
+---- grep.js
+===============================
+/bin
+-- hack.js
+-- grow.js
+-- weaken.js                   // has functionality for looping
+-- share.js                    // has functionality for looping
+-- /svc
+---- contracts.service.js      // checks for and solves contracts
+---- servers.service.js        // tracks and manages the use of servers (and upgrading of player servers)
+---- swarm.service.js          // uses all disposable servers to swarm a target
+---- sweep.service.js          // uses disposable resources to weaken targets
+---- target.service.js         // monitors target servers and reports back sorted lists
+-- /dmn
+---- earlygame.daemon.js       // daemon that works with the bare minimum
+---- default.daemon.js         // daemon that runs after some augments are installed
+-- /sng
+---- (put singularity stuff here)
+-- /ui
+---- box.js
+===============================
+/sbin
+-- /svc
+---- ports.service.js          // handles port activity for the daemon
+---- servers.service.js        // handles server activity for the daemon
+===============================
+/lib
+-- search.lib.js               // contains depthFirstSearch, getServerMap, etc
+-- /core
+---- augment.js
+---- box.js                    // Class for box displays
+---- daemon.js                 // Class for daemons. Extends Service class
+---- port.js                   // Class for receiving and sending ports messages
+---- server.js                 // Class for maintaining server (example: handles tracking of n00dles ram and such)
+---- service.js                // Class for services
+-- /svc
+---- contracts.lib.js
+---- ports.lib.js
+---- servers.lib.js
+---- swarm.lib.js
+---- sweep.lib.js
+---- target.lib.js
+-- /dmn
+---- earlygame.lib.js
+---- default.lib.js
+===============================
+/etc
+-- /svc
+---- contracts.config.js
+---- ports.config.js
+===============================
+/var
+-- augments.txt                // contains info about current augments and other related info
+===============================
+/tmp
+-- put sandbox files here
+===============================
+
+
+
+
+
+OS is responsible for...
+- Daemons
+- display/logs/alerts
+- config changes
+
+Daemon is responsible for...
+- Services
+- port management
+- server management
+
+Services are responsible for...
+- Processes
+
+Processes are responsible for...
+- Completing task(s)
+- Reporting results
+
+
+
+FACTIONS PLAN:
+1. CSEC
+2. NiteSec (not including final augment)
+3. Chongqing (including final augment, same as final NiteSec one)
+4. The Black Hand
+5. BitRunners
+6. Daedalus
+
+If no daedalus, follow until yes
+7. Tian Di Hui
+8. All location factions(?)
+9. Start on megacorp factions
+...
+
+
+
+Rothman Uni until level 50
+If starting out with > $200k, buy TOR and go to good class
+Hack noodles until first 3 exe files
+Home ram at least 32GB (?)
+Determine next best target
+Hack target until all 5 exe files
+Home ram at least up until price > $250
+
+Early game done
