@@ -12,6 +12,8 @@ export async function main(ns: NS) {
     };
   });
 
+  console.log(servers);
+
   servers
     .filter((s) => s.maxRam >= 1024)
     .filter((s) => s.usedRam == 0)

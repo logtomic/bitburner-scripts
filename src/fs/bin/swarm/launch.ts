@@ -16,14 +16,17 @@ async function kickoffLaunch(
 
   const waitTime = ns.getWeakenTime(targetServer);
 
+  // console.log(launchPlan);
+
   launchPlan.forEach((launch) => {
-    ns.exec(
+    const pid = ns.exec(
       actionLookup[launch.action],
       launch.serverName,
       launch.threads,
       targetServer,
       launch.threads
     );
+    // console.log(`${pid} - ${launch.serverName} - ${launch.action}`);
   });
 
   await ns.sleep(waitTime + 2000);

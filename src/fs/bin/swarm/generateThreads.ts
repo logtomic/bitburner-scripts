@@ -105,6 +105,7 @@ function getWeakenRatios(
   growThreadCount: number,
   weakenReduction: number
 ) {
+  if (hackThreadCount + growThreadCount === 0) return [0, 0, 0];
   const totalSecIncrease = growThreadCount * 0.004 + hackThreadCount * 0.002;
   let totalWeakenThreads = Math.ceil(totalSecIncrease / weakenReduction);
 
