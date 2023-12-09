@@ -3,24 +3,24 @@ import { NS } from "@ns";
 import depthFirstSearch from "fs/bin/servers/depthFirstSearch";
 import { unlockServer } from "fs/bin/servers/unlock";
 
-class Server {
-  name: string;
-  sec: number;
-  minSec: number;
-  hackLevel: number;
-  hasAccess: boolean;
-  maxRam: number;
-  children: Record<string, Server>;
-  constructor(ns: NS, name: string) {
-    this.name = name;
-    this.sec = ns.getServerSecurityLevel(name);
-    this.minSec = ns.getServerMinSecurityLevel(name);
-    this.hackLevel = ns.getServerRequiredHackingLevel(name);
-    this.hasAccess = ns.hasRootAccess(name);
-    this.maxRam = ns.getServerMaxRam(name);
-    this.children = {};
-  }
-}
+// class Server {
+//   name: string;
+//   sec: number;
+//   minSec: number;
+//   hackLevel: number;
+//   hasAccess: boolean;
+//   maxRam: number;
+//   children: Record<string, Server>;
+//   constructor(ns: NS, name: string) {
+//     this.name = name;
+//     this.sec = ns.getServerSecurityLevel(name);
+//     this.minSec = ns.getServerMinSecurityLevel(name);
+//     this.hackLevel = ns.getServerRequiredHackingLevel(name);
+//     this.hasAccess = ns.hasRootAccess(name);
+//     this.maxRam = ns.getServerMaxRam(name);
+//     this.children = {};
+//   }
+// }
 
 export function getServerFlatMap(
   ns: NS,
